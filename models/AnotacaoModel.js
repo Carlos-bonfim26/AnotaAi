@@ -1,25 +1,38 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../config/db";
+import sequelize from "../config/db.js";
 
-const Anotacao = sequelize.define('Anotacao', {
+const Anotacao = sequelize.define(
+  "Anotacao",
+  {
     id_anotacao: {
-        primaryKey, type:DataTypes.INTEGER, autoIncrement, allowNull: false
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+      autoIncrement:true,
+      allowNull: false,
     },
-    titulo_anotacao:{
-        type:DataTypes.STRING, 
-        allowNull:false,
+    titulo_anotacao: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    data_create:{
-        type:DataTypes.DATE,
+    data_create: {
+      type: DataTypes.DATE,
     },
-    data_target:{
-        type:DataTypes.DATE,
+    data_target: {
+      type: DataTypes.DATE,
     },
-    descricao_anotacao:{
-        type:DataTypes.TEXT,
-        allowNull:false,
+    descricao_anotacao: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
-    user_ID:{
-        key, type:DataTypes.INTEGER
-    }
-})
+    user_ID: {
+      key:true,
+      type: DataTypes.INTEGER,
+    },
+  },
+  {
+    tableName: "Anotacao_tb",
+    timestamps: false,
+  }
+);
+
+export default Anotacao;
