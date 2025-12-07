@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
-const Usuario = sequelize.define('Usuario_tb', {
+const Usuario = sequelize.define('Usuario', {
     id_user:{
         primaryKey:true, type:DataTypes.INTEGER, autoIncrement:true, allowNull:false
     },

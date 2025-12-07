@@ -1,11 +1,19 @@
 import { Router } from "express";
-import { criarAnotacao, listarTodosAnotacao, obterAnotacao } from "../controllers/AnotacaoController.js";
+import {
+  atualizarAnotacao,
+  criarAnotacao,
+  deletarAnotacao,
+  listarTodosAnotacao,
+  obterAnotacao,
+} from "../controllers/AnotacaoController.js";
 
 const routesAnotacao = Router();
 
 routesAnotacao
-    .get('/anotacao', listarTodosAnotacao)
-    .get('/anotacao/:id', obterAnotacao)
-    .post('/criarAnotacao', criarAnotacao)
-    export default routesAnotacao;
-    
+  .get("/anotacao", listarTodosAnotacao)
+  .get("/anotacao/:id", obterAnotacao)
+  .post("/criarAnotacao", criarAnotacao)
+  .put("/atualizarAnotacao/:id", atualizarAnotacao)
+  .delete("/deletarAnotacao/:id", deletarAnotacao);
+
+export default routesAnotacao;
