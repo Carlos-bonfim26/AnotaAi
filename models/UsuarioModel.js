@@ -11,7 +11,7 @@ const Usuario = sequelize.define('Usuario', {
     email_user:{
         type:DataTypes.STRING,
         allowNull:false,
-        unique
+        unique:true
     },
     data_nasc_user:{
         type:DataTypes.DATE,
