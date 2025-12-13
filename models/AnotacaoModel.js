@@ -8,7 +8,7 @@ const Anotacao = sequelize.define(
     id_anotacao: {
       primaryKey: true,
       type: DataTypes.INTEGER,
-      autoIncrement:true,
+      autoIncrement: true,
       allowNull: false,
     },
     titulo_anotacao: {
@@ -25,8 +25,14 @@ const Anotacao = sequelize.define(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+
+    finalizada: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
     user_ID: {
-      key:true,
+      key: true,
       type: DataTypes.INTEGER,
     },
   },
@@ -35,6 +41,6 @@ const Anotacao = sequelize.define(
     timestamps: false,
   }
 );
-// Usuario.hasMany(Anotacao, {foreignKey:"id_user"});
-// Anotacao.belongsTo(Usuario,{foreignKey:"user_ID"});
+// Usuario.hasMany(Anotacao, {foreignKey:"user_ID"});
+// Anotacao.belongsTo(Usuario,{foreignKey:"id_user"});
 export default Anotacao;

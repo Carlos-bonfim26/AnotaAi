@@ -74,7 +74,7 @@ export async function atualizarAnotacao(req, res) {
       dadosAtualizacao.titulo_anotacao = titulo_anotacao;
     if (data_create !== undefined) dadosAtualizacao.data_create = data_create;
     if (data_target !== undefined) dadosAtualizacao.data_target = data_target;
-      if (finalizada !== undefined) dadosAtualizacao.finalizada = finalizada;
+    if (finalizada !== undefined) dadosAtualizacao.finalizada = finalizada;
     if (descricao_anotacao !== undefined)
       dadosAtualizacao.descricao_anotacao = descricao_anotacao;
     if (user_ID !== undefined) {

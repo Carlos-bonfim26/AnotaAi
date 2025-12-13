@@ -1,12 +1,10 @@
 import api from "./axios.js";
-console.log("entrou")
 
 addEventListener("load", () => {
     listarAnotacoes();
 })
 
 async function listarAnotacoes() {
-    console.log("entrou")
 
     const secaoAnotacoes = document.querySelector(".anotacoes>div");
 
@@ -132,7 +130,6 @@ function renomearAnotacao(obj, id) {
 }
 
 async function alterarAndamentoAnotacao(obj, id) {
-
     if (obj.checked) {
 
         await api.patch(`/atualizarAnotacao/${id}`,
