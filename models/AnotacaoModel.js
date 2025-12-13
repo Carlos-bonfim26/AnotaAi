@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/db.js";
+import Usuario from "./UsuarioModel.js";
 
 const Anotacao = sequelize.define(
   "Anotacao",
@@ -34,5 +35,6 @@ const Anotacao = sequelize.define(
     timestamps: false,
   }
 );
-
+Usuario.hasMany(Anotacao, {foreignKey:"id_usuario"});
+Anotacao.belongsTo(Usuario,{foreignKey:"user_ID"});
 export default Anotacao;

@@ -25,17 +25,25 @@ export async function usuario(req, res) {
 }
 export async function criarUsuario(req, res) {
   const { nome_user, email_user, data_nasc_user, senha_user } = req.body;
-  try {
-    const novoUsuario = await Usuario.create({
-      nome_user,
-      email_user,
-      data_nasc_user,
-      senha_user,
+  const emailExiste = await buscarEmail(email_user);
+
+  if (emailExiste) {
+    try {
+      const novoUsuario = await Usuario.create({
+        nome_user,
+        email_user,
+        data_nasc_user,
+        senha_user,
+      });
+      return res.status(201).json(novoUsuario);
+    } catch (error) {
+      res.status(500).json({ mensagem: "Erro inesperado: " + error });
+      console.error("Erro na requisição: " + error);
+    }
+  } else {
+    return res.status(409).json({
+      mensagem: `O email ${email_user} já existe na nossa base de dados e não pode ser cadastrado novamente`,
     });
-    return res.status(201).json(novoUsuario);
-  } catch (error) {
-    res.status(500).json({ mensagem: "Erro inesperado: " + error });
-    console.error("Erro na requisição: " + error);
   }
 }
 export async function atualizarUsuario(req, res) {
@@ -93,4 +101,14 @@ async function obterUsuarioPorIdInterno(id) {
     console.error("Erro ao obter usuário por ID: " + error);
     throw error;
   }
+}
+async function buscarEmail(email) {
+  const emailExistente = (await Usuario.findOne({
+    where: {
+      email_user: email,
+    },
+  }))
+    ? true
+    : false;
+  return emailExistente;
 }
