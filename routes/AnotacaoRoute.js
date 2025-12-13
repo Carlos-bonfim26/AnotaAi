@@ -13,7 +13,7 @@ routesAnotacao
   .get("/anotacao", listarTodosAnotacao)
   .get("/anotacao/:id", obterAnotacao)
   .post("/criarAnotacao", criarAnotacao)
-  .put("/atualizarAnotacao/:id", atualizarAnotacao)
+  .patch("/atualizarAnotacao/:id", atualizarAnotacao)
   .delete("/deletarAnotacao/:id", deletarAnotacao);
 
 export default routesAnotacao;

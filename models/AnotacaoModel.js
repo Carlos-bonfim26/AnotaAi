@@ -35,6 +35,6 @@ const Anotacao = sequelize.define(
     timestamps: false,
   }
 );
-Usuario.hasMany(Anotacao, {foreignKey:"id_usuario"});
-Anotacao.belongsTo(Usuario,{foreignKey:"user_ID"});
+// Usuario.hasMany(Anotacao, {foreignKey:"id_user"});
+// Anotacao.belongsTo(Usuario,{foreignKey:"user_ID"});
 export default Anotacao;

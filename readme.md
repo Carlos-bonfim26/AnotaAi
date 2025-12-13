@@ -4,7 +4,7 @@
 
 ```bash
 #instalações
-npm i express sequelize mysql2 nodemon dotenv
+npm i express sequelize mysql2 nodemon dotenv axios
 
 #rodar servidor
 npx nodemon server.js 

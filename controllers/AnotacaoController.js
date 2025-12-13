@@ -1,12 +1,12 @@
 import Anotacao from "../models/AnotacaoModel.js";
 
 export async function criarAnotacao(req, res) {
-  const { titulo_anotacao, data_create, descricao_anotacao, user_ID } =
+  const { titulo_anotacao, data_create, descricao_anotacao, user_ID, finalizada } =
     req.body;
 
   try {
     let novaAnatacao = {
-      titulo_anotacao: titulo_anotacao,
+      titulo_anotacao: "",
       data_create: data_create,
       descricao_anotacao: descricao_anotacao,
       finalizada: false,
@@ -54,6 +54,7 @@ export async function atualizarAnotacao(req, res) {
     data_target,
     descricao_anotacao,
     user_ID,
+    finalizada
   } = req.body;
 
   if (!id || isNaN(id)) {
@@ -73,6 +74,7 @@ export async function atualizarAnotacao(req, res) {
       dadosAtualizacao.titulo_anotacao = titulo_anotacao;
     if (data_create !== undefined) dadosAtualizacao.data_create = data_create;
     if (data_target !== undefined) dadosAtualizacao.data_target = data_target;
+      if (finalizada !== undefined) dadosAtualizacao.finalizada = finalizada;
     if (descricao_anotacao !== undefined)
       dadosAtualizacao.descricao_anotacao = descricao_anotacao;
     if (user_ID !== undefined) {
@@ -82,7 +84,7 @@ export async function atualizarAnotacao(req, res) {
       }
       dadosAtualizacao.user_ID = user_ID;
     }
-
+    
     if (Object.keys(dadosAtualizacao).length === 0) {
       return res
         .status(400)
